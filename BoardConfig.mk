@@ -21,18 +21,18 @@
 #
 
 # Inherit from common a3
--include device/samsung/a3-common/BoardConfigCommon.mk
+-include device/samsung/rossa-common/BoardConfigCommon.mk
 
 # Inherit from the proprietary version
--include vendor/samsung/a3ltexx/BoardConfigVendor.mk
+-include vendor/samsung/rossa/BoardConfigVendor.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := a3ltexx,a3ultexx,a33gxx,a33g
+TARGET_OTA_ASSERT_DEVICE := rossa,coreprimeltexx,coreprimelte
 
 # Kernel
 TARGET_KERNEL_CONFIG := msm8916_sec_defconfig 
 #cyanogen_a3ltexx_defconfig
-TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_a3_eur_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_eur_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 #TARGET_NO_RECOVERY := true
 

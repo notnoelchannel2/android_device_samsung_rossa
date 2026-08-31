@@ -14,19 +14,19 @@
 #
 
 # Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/a3ltexx/a3ltexx-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/rossa/rossa-vendor.mk)
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 960
-TARGET_SCREEN_WIDTH := 540
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_AAPT_CONFIG := normal
 
 # Device overlay
-DEVICE_PACKAGE_OVERLAYS += device/samsung/a3ltexx/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/rossa/overlay
 
-# Inherit from a3-common
-$(call inherit-product, device/samsung/a3-common/common.mk)
+# Inherit from rossa-common
+$(call inherit-product, device/samsung/rossa-common/common.mk)
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \

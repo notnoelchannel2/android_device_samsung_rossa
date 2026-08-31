@@ -4,8 +4,8 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
-$(call inherit-product, device/samsung/a3ltexx/full_a3ltexx.mk)
+$(call inherit-product, device/samsung/rossa/full_rossa.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=a3ltexx TARGET_DEVICE=a3lte
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=rossa TARGET_DEVICE=rossa
 
-PRODUCT_NAME := cm_a3ltexx
+PRODUCT_NAME := cm_rossa

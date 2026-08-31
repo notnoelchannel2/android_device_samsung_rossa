@@ -69,67 +69,29 @@ void vendor_load_properties()
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
-    property_get("ro.bootloader", bootloader, "A300F");
+    property_get("ro.bootloader", bootloader, "G360F");
 
-    if (strstr(bootloader, "A300FU")) {
-        /* SM-A300FU */
-        property_set("ro.product.model", "SM-A300FU");
-        property_set("ro.product.device", "a3ulte");
-		property_set("ro.product.name", "a3ultexx");
-	} else if (strstr(bootloader, "A300YZ")) {
-        /* SM-A300YZ */
-        property_set("ro.product.model", "SM-A300YZ");
-        property_set("ro.product.device", "a3ltezt");
-        property_set("ro.product.name", "a3ltezt");
-    } else if (strstr(bootloader, "A3000")) {
-        /* SM-A3000 */
-        property_set("ro.product.model", "SM-A3000");
-        property_set("ro.product.device", "a3ltechn");
-        property_set("ro.product.name", "a3ltezc");
-    } else if (strstr(bootloader, "A3009")) {
-        /* SM-A3009 */
-        property_set("ro.product.model", "SM-A3009");
-        property_set("ro.product.device", "a3ltectc");
-        property_set("ro.product.name", "a3ltectc");
-    } else if (strstr(bootloader, "A300F")) {
-        /* SM-A300F */
-        property_set("ro.product.model", "SM-A300F");
-        property_set("ro.product.device", "a3lte");
-        property_set("ro.product.name", "a3ltexx");
-    } else if (strstr(bootloader, "A300H")) {
-        /* SM-A300H */
-        property_set("ro.product.model", "SM-A300H");
-        property_set("ro.product.device", "a33g");
-        property_set("ro.product.name", "a33gxx");
-	} else if (strstr(bootloader, "A300M")) {
-        /* SM-A300M */
-        property_set("ro.product.model", "SM-A300M");
-        property_set("ro.product.device", "a3lte");
-        property_set("ro.product.name", "a3lteub");
-	} else if (strstr(bootloader, "A300G")) {
-        /* SM-A300G */
-        property_set("ro.product.model", "SM-A300G");
-        property_set("ro.product.device", "a3ltedd");
-        property_set("ro.product.name", "a3ltezso");
-	} else if (strstr(bootloader, "A300Y")) {
-        /* SM-A300Y */
-        property_set("ro.product.model", "SM-A300Y");
-        property_set("ro.product.device", "a3ulte");
-        property_set("ro.product.name", "a3ultedv");
+    if (strstr(bootloader, "G360FY")) {
+        property_set("ro.product.model", "SM-G360FY");
+        property_set("ro.product.device", "rossa");
+		property_set("ro.product.name", "coreprimeltexx");
+	} else if (strstr(bootloader, "G360R6")) {
+        property_set("ro.product.model", "SM-G360R6");
+        property_set("ro.product.device", "coreprimeltelra");
+        property_set("ro.product.name", "coreprimeltelra");
+    } else if (strstr(bootloader, "G360T")) {
+        property_set("ro.product.model", "SM-G360T");
+        property_set("ro.product.device", "cprimeltetmo");
+        property_set("ro.product.name", "cprimeltetmo");
     } else {
-        /* SM-A300? */
         property_set("ro.product.model", bootloader);
-        property_set("ro.product.device", "a3lte");
+        property_set("ro.product.device", "rossa");
     }
 
 	int curlang;
 	curlang = property_get("ro.product.locale", platform, ""); 
 	if (!curlang) {	
-		if (FileExists("system/loader/rus.lang")) {
-		property_set("ro.product.locale", "ru-RU");
-		} else {
 		property_set("ro.product.locale", "en-US");
-		}
 	}
 
 		INFO("INIT: sim_count detecting");
@@ -142,18 +104,15 @@ void vendor_load_properties()
 			fin.close();
 
 			if (strstr(buff,"2")) {
-			//property_set("ro.product.model", "SM-A300F2");
 			init_dsds();
 			} else {
-			//property_set("ro.product.model", "SM-A300F1");
 			init_ss();
 			}
 		} else {
-		//property_set("ro.product.model", "SM-A300F0");
 		init_ss();
 		}
 
-    property_get("ro.product.device", device, "A300?");
+    property_get("ro.product.device", device, "G360?");
     strlcpy(devicename, device, sizeof(devicename));
     INFO("Found bootloader id %s setting build properties for %s device\n", bootloader, devicename);
 }

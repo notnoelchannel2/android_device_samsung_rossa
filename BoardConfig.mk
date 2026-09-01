@@ -38,5 +38,5 @@ TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_a3lte
-TARGET_RECOVERY_DEVICE_MODULES := libinit_a3lte
+TARGET_INIT_VENDOR_LIB := libinit_rossa
+TARGET_RECOVERY_DEVICE_MODULES := libinit_rossa

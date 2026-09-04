@@ -7,7 +7,7 @@ LOCAL_PATH := device/samsung/rossa
 TARGET_OTA_ASSERT_DEVICE := rossa,coreprimelte,coreprimeltexx
 
 # Kernel
-TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_eur_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := recovery_msm8916_sec_rossa_eur_defconfig
 
 # Partition sizes
 BOARD_SYSTEMIMAGE_PARTITION_SIZE    := 1237319680

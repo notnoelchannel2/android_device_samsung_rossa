@@ -18,6 +18,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/rossa-caf
 TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_eur_defconfig
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_DTBTOOL_ARGS := -2

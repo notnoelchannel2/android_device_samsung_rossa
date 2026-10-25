@@ -2,20 +2,22 @@
 include device/samsung/qcom-common/BoardConfigCommon.mk
 
 # Includes from vendor
--include vendor/samsung/heatqlte/BoardConfigVendor.mk
+-include vendor/samsung/rossa/BoardConfigVendor.mk
 
-LOCAL_PATH := device/samsung/heatqlte
+LOCAL_PATH := device/samsung/rossa
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := heatqlte,heatqltexx,g357fz,sm-g357fz
+TARGET_OTA_ASSERT_DEVICE := rossa,coreprimeltexx,rossaxx
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/heatqlte
-TARGET_KERNEL_CONFIG := heatqlte_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/rossa-caf
+TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
+TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_eur_defconfig
 
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_DTBTOOL_ARGS := -2
@@ -55,8 +57,8 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 13631488
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 5509201920
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1237319680
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5816430592
 BOARD_CACHEIMAGE_PARTITION_SIZE := 524288000
 BOARD_FLASH_BLOCK_SIZE := 131072
 

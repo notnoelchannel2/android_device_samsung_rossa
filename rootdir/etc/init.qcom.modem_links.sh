@@ -38,7 +38,7 @@ cd /firmware/image
 # Get the list of files in /firmware/image
 # for which sym links have to be created
 
-fwfiles=`ls modem* adsp* wcnss* mba* tima_* venus* sshdcpap*`
+fwfiles=`ls modem* adsp* wcnss* mba* venus* tima_*`
 
 # Check if the links with similar names
 # have been created in /system/etc/firmware
@@ -106,16 +106,6 @@ case $linksNeeded in
             log -p w -t PIL no wcnss image found;;
       esac
 
-	case `ls venus.mdt 2>/dev/null` in                                             
-	 venus.mdt)                                                                    
-	    for imgfile in venus*; do                                                  
-	       ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
-	    done                                                                       
-	    ;;                                                                         
-	 *)                                                                            
-	    log -p w -t PIL no venus image found;;                                     
-	esac     
-	
       case `ls tima_pkm.mdt 2>/dev/null` in
          tima_pkm.mdt)
             for imgfile in tima_pkm*; do
@@ -146,16 +136,6 @@ case $linksNeeded in
             log -p w -t PIL 8974 device but no tima_atn image found;;
       esac
 
-      case `ls sshdcpap.mdt 2>/dev/null` in
-         sshdcpap.mdt)
-            for imgfile in sshdcpap*; do
-               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
-            done
-            ;;
-         *)
-            log -p w -t PIL 8974 device but no sshdcpap image found;;
-      esac
-
       case `ls mba.mdt 2>/dev/null` in
          mba.mdt)
             for imgfile in mba*; do
@@ -164,6 +144,16 @@ case $linksNeeded in
             ;;
          *)
             log -p w -t PIL no mba image found;;
+      esac
+
+      case `ls venus.mdt 2>/dev/null` in
+         venus.mdt)
+            for imgfile in venus*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL no venus image found;;
       esac
 
       ;;

@@ -20,15 +20,15 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-PRODUCT_RELEASE_NAME := Samsung Galaxy Ace Style
+PRODUCT_RELEASE_NAME := Samsung Galaxy Core Prime
 
-$(call inherit-product, device/samsung/heatqlte/device.mk)
+$(call inherit-product, device/samsung/rossa/device.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := heatqlte
-PRODUCT_NAME := cm_heatqlte
+PRODUCT_DEVICE := rossa
+PRODUCT_NAME := cm_rossa
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-G357FZ
+PRODUCT_MODEL := SM-G360F
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_CHARACTERISTICS := phone
 

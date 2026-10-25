@@ -1,5 +1,5 @@
 # Inherit from vendor
-$(call inherit-product-if-exists, vendor/samsung/heatqlte/heatqlte-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/rossa/rossa-vendor.mk)
 
 # Inherit from common
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
@@ -7,7 +7,7 @@ $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
 # Inhert dalvik heap values from aosp
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-LOCAL_PATH := device/samsung/heatqlte
+LOCAL_PATH := device/samsung/rossa
 
 # Init
 PRODUCT_COPY_FILES += \
@@ -35,7 +35,6 @@ PRODUCT_COPY_FILES += \
 # Init ETC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.rootagent.sh:system/etc/init.qcom.rootagent.sh \
     $(LOCAL_PATH)/rootdir/etc/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     $(LOCAL_PATH)/rootdir/etc/init.crda.sh:system/etc/init.crda.sh \
@@ -228,7 +227,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
 	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
 	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
-    kernel/samsung/heatqlte/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat
+    kernel/samsung/rossa/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

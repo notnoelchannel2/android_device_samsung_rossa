@@ -107,6 +107,15 @@ static bool needYUV420preview(android::CameraParameters &params) {
 
 #define KEY_VIDEO_HFR_VALUES "video-hfr-values"
 
+/* QCOM/Samsung parameter keys. CM 12.1 only declares these in
+ * CameraParameters when a device provides CameraParametersExtra.h, so use
+ * the raw key strings (same values as the stock HAL). */
+#define KEY_SUPPORTED_ISO_MODES "iso-values"
+#define KEY_ISO_MODE "iso"
+#define KEY_ZSL "zsl"
+#define ZSL_OFF "off"
+#define ZSL_ON "on"
+
 /* One entry per camera id (0 = rear, 1 = front); indexing by id with a
  * single entry read past the array when the front camera was opened. */
 const static char * iso_values[] = {
@@ -126,7 +135,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
     // fix params here
     if (id >= 0 && id < (int)(sizeof(iso_values) / sizeof(iso_values[0])))
-        params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
+        params.set(KEY_SUPPORTED_ISO_MODES, iso_values[id]);
     params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
     params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
     params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
@@ -171,9 +180,9 @@ static char *camera_fixup_setparams(struct camera_device *device, const char *se
     bool isVideo = recordingHint && !strcmp(recordingHint, "true");
 
     if (isVideo) {
-        params.set(android::CameraParameters::KEY_ZSL, android::CameraParameters::ZSL_OFF);
+        params.set(KEY_ZSL, ZSL_OFF);
     } else {
-        params.set(android::CameraParameters::KEY_ZSL, android::CameraParameters::ZSL_ON);
+        params.set(KEY_ZSL, ZSL_ON);
     }
 
     if (needYUV420preview(params)) {
@@ -184,17 +193,17 @@ static char *camera_fixup_setparams(struct camera_device *device, const char *se
     // fix params here
     // No need to fix-up ISO_HJR, it is the same for userspace and the camera lib
     if (params.get("iso")) {
-        const char *isoMode = params.get(android::CameraParameters::KEY_ISO_MODE);
+        const char *isoMode = params.get(KEY_ISO_MODE);
         if (strcmp(isoMode, "ISO100") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "100");
+            params.set(KEY_ISO_MODE, "100");
         else if (strcmp(isoMode, "ISO200") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "200");
+            params.set(KEY_ISO_MODE, "200");
         else if (strcmp(isoMode, "ISO400") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "400");
+            params.set(KEY_ISO_MODE, "400");
         else if (strcmp(isoMode, "ISO800") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "800");
+            params.set(KEY_ISO_MODE, "800");
         else if (strcmp(isoMode, "ISO1600") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "1600");
+            params.set(KEY_ISO_MODE, "1600");
     }
 
     android::String8 strParams = params.flatten();

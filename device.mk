@@ -172,10 +172,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
 	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
-# Connectivity Engine support
-PRODUCT_PACKAGES += \
-	libcnefeatureconfig
-
 # CRDA
 PRODUCT_PACKAGES += \
     crda \

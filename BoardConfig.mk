@@ -88,6 +88,13 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 
+# Camera (wrapper around the stock HAL, see camera/)
+TARGET_PROVIDES_CAMERA_HAL := true
+USE_DEVICE_SPECIFIC_CAMERA := true
+
+# GPS (HAL source matched to the Samsung loc blobs, see gps/)
+USE_DEVICE_SPECIFIC_GPS := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 

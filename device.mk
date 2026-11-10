@@ -201,6 +201,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libqcicu
 
+# FM radio (hardware/qcom/fm)
+PRODUCT_PACKAGES += \
+	FM2 \
+	FMRecord \
+	libqcomfm_jni \
+	qcom.fmradio
+
+# Time services (persists the user clock via time_daemon)
+PRODUCT_PACKAGES += \
+	TimeService
+
 # Camera
 PRODUCT_PACKAGES += \
 	camera.msm8916 \

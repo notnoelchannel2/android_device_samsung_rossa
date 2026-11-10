@@ -14,7 +14,7 @@ TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/rossa-caf
+TARGET_KERNEL_SOURCE := kernel/samsung/coreprimelte
 TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_eur_defconfig

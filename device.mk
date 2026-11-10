@@ -156,7 +156,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
 # Display
+# libGLES_android: software GL renderer, only used when ro.kernel.qemu=1 and
+# ro.kernel.qemu.gles=0 are set (debugging without the Adreno driver).
 PRODUCT_PACKAGES += \
+    libGLES_android \
     copybit.msm8916 \
     gralloc.msm8916 \
     hwcomposer.msm8916 \

@@ -201,6 +201,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	power.msm8916
 
+# Shims
+PRODUCT_PACKAGES += \
+	libqcicu
+
 # USB
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory

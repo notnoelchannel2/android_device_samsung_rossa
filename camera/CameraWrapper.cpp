@@ -25,6 +25,11 @@
 
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
+#include <cutils/properties.h>
+
+#include <errno.h>
+#include <string.h>
+#include <unistd.h>
 
 #include <utils/threads.h>
 #include <utils/String8.h>
@@ -83,6 +88,31 @@ typedef struct wrapper_camera_device {
 
 #define CAMERA_ID(device) (((wrapper_camera_device_t *)(device))->id)
 
+/*
+ * The stock HAL blocks inside the msm camera driver, spinning forever, when
+ * mm-qcamera-daemon (init service "qcamerasvr") isn't running. CameraService
+ * probes the HAL while mediaserver starts, before AudioPolicyService is
+ * published, so a dead daemon used to hang mediaserver and therefore boot.
+ * Only touch the vendor HAL once the daemon is up and has stayed up briefly.
+ */
+static bool camera_daemon_running()
+{
+    char value[PROPERTY_VALUE_MAX];
+
+    /* mediaserver and qcamerasvr are both class main; allow ~5s for it. */
+    for (int i = 0; i < 50; i++) {
+        property_get("init.svc.qcamerasvr", value, "");
+        if (!strcmp(value, "running")) {
+            /* Make sure it didn't just crash on start (e.g. a missing lib). */
+            usleep(500 * 1000);
+            property_get("init.svc.qcamerasvr", value, "");
+            return !strcmp(value, "running");
+        }
+        usleep(100 * 1000);
+    }
+    return false;
+}
+
 static int check_vendor_module()
 {
     int rv = 0;
@@ -90,6 +120,11 @@ static int check_vendor_module()
 
     if (gVendorModule)
         return 0;
+
+    if (!camera_daemon_running()) {
+        ALOGE("mm-qcamera-daemon is not running, not loading vendor camera HAL");
+        return -ENODEV;
+    }
 
     rv = hw_get_module_by_class("camera", "vendor",
             (const hw_module_t**)&gVendorModule);

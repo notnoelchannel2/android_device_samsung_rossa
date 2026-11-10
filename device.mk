@@ -205,6 +205,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libqcicu
 
+# Camera
+PRODUCT_PACKAGES += \
+	camera.msm8916 \
+	libstlport
+
+# GPS
+PRODUCT_PACKAGES += \
+	gps.msm8916
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/configs/gps/izat.conf:system/etc/izat.conf \
+	$(LOCAL_PATH)/configs/gps/sap.conf:system/etc/sap.conf \
+	$(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf
+
 # USB
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory

@@ -104,6 +104,9 @@ MALLOC_IMPL := dlmalloc
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 
+# NFC (Samsung N5, /dev/sec-nfc)
+BOARD_HAVE_NFC := true
+
 # FM
 AUDIO_FEATURE_ENABLED_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true

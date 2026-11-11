@@ -201,6 +201,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libqcicu
 
+# NFC (Samsung N5 controller, HAL is vendor nfc_nci.msm8916)
+PRODUCT_PACKAGES += \
+	libnfc_nci \
+	NfcNci \
+	Tag \
+	com.android.nfc_extras
+
+PRODUCT_COPY_FILES += \
+	frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+	frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+	frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+	$(LOCAL_PATH)/configs/nfc/libnfc-sec.conf:system/etc/libnfc-brcm.conf \
+	$(LOCAL_PATH)/configs/nfc/libnfc-sec-hal.conf:system/etc/libnfc-sec-hal.conf \
+	$(LOCAL_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
+
 # FM radio (hardware/qcom/fm)
 PRODUCT_PACKAGES += \
 	FM2 \

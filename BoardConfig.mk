@@ -79,7 +79,9 @@ BOARD_USES_ALSA_AUDIO := true
 
 # RIL
 TARGET_RIL_VARIANT := caf
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+# cm-13.0: ril13/ holds the Marshmallow SamsungQcomRIL (from Galaxy-MSM8916
+# msm8916-common cm-13.0); ril/ keeps the Lollipop class for cm-12.1.
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril13
 PROTOBUF_SUPPORTED := true
 
 # Bluetooth
@@ -106,6 +108,7 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # NFC (Samsung N5, /dev/sec-nfc)
 BOARD_HAVE_NFC := true
+BOARD_NFC_HAL_SUFFIX := msm8916
 
 # FM
 AUDIO_FEATURE_ENABLED_FM := true
@@ -118,6 +121,9 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_USES_QCOM_BSP := true
+
+# cm-13.0 caf-8916 HALs: the kernel uses the new ION API (heap_id_mask)
+TARGET_USES_NEW_ION_API := true
 
    
 TARGET_QCOM_DISPLAY_VARIANT := caf
@@ -166,3 +172,12 @@ TARGET_RECOVERY_DENSITY := hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/recovery.fstab
+
+# SELinux (cm-13.0). The kernel cmdline keeps androidboot.selinux=permissive
+# for bring-up; the policy below is from Galaxy-MSM8916 msm8916-common cm-13.0.
+-include device/qcom/sepolicy/sepolicy.mk
+-include vendor/cm/sepolicy/sepolicy.mk
+-include vendor/cm/sepolicy/qcom/sepolicy.mk
+
+BOARD_SEPOLICY_DIRS += \
+    $(LOCAL_PATH)/sepolicy

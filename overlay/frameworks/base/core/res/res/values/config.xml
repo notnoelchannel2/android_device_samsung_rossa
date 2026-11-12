@@ -250,7 +250,7 @@
     <bool name="config_carrier_volte_tty_supported">true</bool>
 
     <!-- bool value to for enabling motion accelerometer -->
-    <bool name="use_motion_accel">true</bool>
+    <!-- cm-13.0: not in framework-res any more (AAPT rejects it): <bool name="use_motion_accel">true</bool> -->
     
     <!-- default device has recents property -->
     <bool name="config_hasRecents">true</bool>
@@ -308,8 +308,8 @@
     <integer name="config_longPressOnAppSwitchBehavior">1</integer>
 
     <!-- Performance profiles -->
-    <string name="config_perf_profile_prop">powerhal</string>
-    <string name="config_perf_profile_default_entry">1</string>
+    <!-- cm-13.0: not in framework-res any more (AAPT rejects it): <string name="config_perf_profile_prop">powerhal</string> -->
+    <!-- cm-13.0: not in framework-res any more (AAPT rejects it): <string name="config_perf_profile_default_entry">1</string> -->
     
     <!-- Device configuration indicating whether we should avoid using accelerated graphics
          in certain places to reduce RAM footprint.  This is ignored if ro.config.low_ram

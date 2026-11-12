@@ -25,12 +25,17 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/rootdir/init.samsung.rc:root/init.samsung.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/rootdir/init.qcom.ssr.sh:root/init.qcom.ssr.sh \
-    $(LOCAL_PATH)/rootdir/init.trace.rc:root/init.trace.rc \
     $(LOCAL_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
-    $(LOCAL_PATH)/rootdir/init.usb.rc:root/init.usb.rc \
     $(LOCAL_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh
+
+# cm-13.0: rootdir/ueventd.rc, init.trace.rc and init.usb.rc are Lollipop
+# copies of the system/core files and would shadow Marshmallow's own (the
+# device-specific /dev/ttyUSB* rule is already in ueventd.qcom.rc). They stay in
+# the tree for cm-12.1 but are no longer installed:
+#   $(LOCAL_PATH)/rootdir/ueventd.rc:root/ueventd.rc
+#   $(LOCAL_PATH)/rootdir/init.trace.rc:root/init.trace.rc
+#   $(LOCAL_PATH)/rootdir/init.usb.rc:root/init.usb.rc
 
 # Init ETC
 PRODUCT_COPY_FILES += \

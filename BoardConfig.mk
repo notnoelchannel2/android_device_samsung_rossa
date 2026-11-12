@@ -14,7 +14,10 @@ TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/coreprimelte
+# cm-13.0: kernel/samsung/rossa is android_kernel_samsung_rossa-2 (3.10.108 +
+# SELinux policy v30 support, needed to load Marshmallow's sepolicy).
+# cm-12.1 used: TARGET_KERNEL_SOURCE := kernel/samsung/coreprimelte
+TARGET_KERNEL_SOURCE := kernel/samsung/rossa
 TARGET_KERNEL_CONFIG := msm8916_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := msm8916_sec_rossa_eur_defconfig

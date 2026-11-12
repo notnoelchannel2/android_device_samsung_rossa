@@ -49,6 +49,15 @@ git apply ../../device/samsung/rossa/patches/frameworks_base/0001-zygote-skip-un
 ```
 
 **Kernel:** Marshmallow's sepolicy needs SELinux policy version 30 (ioctl
-command whitelisting). The current kernel (kernel/samsung/coreprimelte) only
-supports up to version 28, so it can't load the policy and won't boot cm-13.0
-until that support is backported.
+command whitelisting). kernel/samsung/coreprimelte (cm-12.1) only supports up
+to version 28, so cm-13.0 uses android_kernel_samsung_rossa-2 instead
+(3.10.108 plus the Android SELinux xperms backport, branch `selinux-xperms`
+until merged):
+
+```xml
+<project path="kernel/samsung/rossa" name="notnoelchannel2/android_kernel_samsung_rossa-2" revision="selinux-xperms" />
+```
+
+That kernel's `sec_jack` driver reports the headset through
+`/sys/class/switch/h2w`, so the cm-13.0 overlay sets
+`config_useDevInputEventForAudioJack` to false.

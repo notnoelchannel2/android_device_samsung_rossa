@@ -344,6 +344,12 @@
     <!-- The kernel reports the headset only as an ALSA "Headset Jack" input
          device (SW_HEADPHONE_INSERT/SW_MICROPHONE_INSERT); there is no
          /sys/class/switch/h2w, so read jack state from input events. -->
+    <!-- cm-13.0 uses kernel/samsung/rossa (android_kernel_samsung_rossa-2),
+         where Samsung's sec_jack driver reports the headset through
+         /sys/class/switch/h2w and sends no SW_* input events, so the
+         framework has to watch h2w (the default) instead:
     <bool name="config_useDevInputEventForAudioJack">true</bool>
+    -->
+    <bool name="config_useDevInputEventForAudioJack">false</bool>
 
 </resources>

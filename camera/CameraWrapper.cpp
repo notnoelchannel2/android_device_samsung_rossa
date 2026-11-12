@@ -72,6 +72,10 @@ camera_module_t HAL_MODULE_INFO_SYM = {
     .set_callbacks = NULL, /* remove compilation warnings */
     .get_vendor_tag_ops = NULL, /* remove compilation warnings */
     .open_legacy = NULL, /* remove compilation warnings */
+    /* cm-13.0: Marshmallow's camera_module_t has these two before reserved,
+     * and GCC needs every field in order. Module API 1.0 doesn't use them. */
+    .set_torch_mode = NULL,
+    .init = NULL,
     .reserved = {0}, /* remove compilation warnings */
 };
 

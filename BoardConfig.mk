@@ -10,7 +10,10 @@ LOCAL_PATH := device/samsung/rossa
 TARGET_OTA_ASSERT_DEVICE := rossa,coreprimeltexx,rossaxx
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
+# cm-13.0: device/qcom/common no longer builds libinit_msm, so init/ carries
+# a port of it (same behaviour as cm-12.1).
+# cm-12.1 used: TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_INIT_VENDOR_LIB := libinit_rossa
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Kernel

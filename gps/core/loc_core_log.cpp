@@ -102,6 +102,28 @@ const char* loc_get_position_recurrence_name(GpsPositionRecurrence recur)
 
 
 
+/* cm-13.0: Marshmallow's hardware/gps.h went back to the plain AOSP
+ * delete-aiding-data flags, dropping the CAF GPS/GLONASS/BeiDou extras this
+ * log table names. Keep the cm-12.1 CAF values so the table still compiles;
+ * they are only used to label bits in the debug log. */
+#ifndef GPS_DELETE_ALMANAC_CORR
+#define GPS_DELETE_ALMANAC_CORR                  0x00001000
+#define GPS_DELETE_FREQ_BIAS_EST                 0x00002000
+#define GLO_DELETE_EPHEMERIS                     0x00004000
+#define GLO_DELETE_ALMANAC                       0x00008000
+#define GLO_DELETE_SVDIR                         0x00010000
+#define GLO_DELETE_SVSTEER                       0x00020000
+#define GLO_DELETE_ALMANAC_CORR                  0x00040000
+#define GPS_DELETE_TIME_GPS                      0x00080000
+#define GLO_DELETE_TIME                          0x00100000
+#define BDS_DELETE_SVDIR                         0X00200000
+#define BDS_DELETE_SVSTEER                       0X00400000
+#define BDS_DELETE_TIME                          0X00800000
+#define BDS_DELETE_ALMANAC_CORR                  0X01000000
+#define BDS_DELETE_EPHEMERIS                     0X02000000
+#define BDS_DELETE_ALMANAC                       0X04000000
+#endif
+
 static loc_name_val_s_type loc_eng_aiding_data_bits[] =
 {
     NAME_VAL( GPS_DELETE_EPHEMERIS ),

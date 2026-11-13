@@ -88,11 +88,14 @@ TARGET_RIL_VARIANT := caf
 # cm-13.0: ril13/ holds the Marshmallow SamsungQcomRIL (from Galaxy-MSM8916
 # msm8916-common cm-13.0); ril/ keeps the Lollipop class for cm-12.1.
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril13
-# cm-13.0: don't build CM's libril; use Samsung's libril.so from the vendor
-# tree (the one libsec-ril.so ships with), as Galaxy-MSM8916 msm8916-common
-# does. Marshmallow's libril is further from Samsung's L-era RIL than
-# Lollipop's was, so keep Samsung's own pairing.
-BOARD_PROVIDES_LIBRIL := true
+# Don't set BOARD_PROVIDES_LIBRIL here, even though Galaxy-MSM8916's
+# msm8916-common does: it stops hardware/ril-caf building libril, and nothing
+# in this tree replaces it, so rild has no libril to link against.
+# hardware/samsung's libril is only built for the modems listed in
+# ril/Android.mk (m7450, mdm9x35, ss333, tss310, xmm*), and msm8916's
+# integrated modem is not one of them. The vendor tree's libril.so is copied
+# into place with PRODUCT_COPY_FILES, which installs a file but provides no
+# module to link. Same as cm-12.1.
 PROTOBUF_SUPPORTED := true
 
 # Bluetooth
